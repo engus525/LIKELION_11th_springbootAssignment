@@ -1,6 +1,5 @@
 package likelion.springbootkdh.service;
 
-import likelion.springbootkdh.domain.Item;
 import likelion.springbootkdh.domain.Member;
 import likelion.springbootkdh.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;

@@ -14,14 +14,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /*
- * 채우시오
+ * @Controller :
+ * Spring Bean으로 등록함과 동시에 Spring에게 Controller임을 인식시킨다.
+ * 이를 통해 해당 Class의 메서드를 통해 http 요청을 처리할 수 있게된다.
+ *
+ * @RequestMapping :
+ * 해당 Class의 메서드들이 요청을 주고받을 url 기본 경로를 설정한다.
+ * 이 경우 모든 메서드는 "/members"의 url 경로를 기준으로 http 요청이 처리된다.
  **/
 @Controller
 @RequestMapping("members")
 public class MemberController
 {
     /*
-     * 채우시오.
+     * private final : 외부로부터의 접근을 제한하고, 값이 불변함을 명시한다.
+     * 이는 의존관계 주입을 통해 프로그램의 유연성을 높이기위함이다.
      **/
     private final MemberService memberService;
 
@@ -42,7 +49,13 @@ public class MemberController
     }
 
     /*
-     * 채우시오
+     * @GetMapping("new") : GET 요청을 처리할 url 경로를 지정한다. "/members/new"가 된다.
+     *
+     * model.addAttribute("memberForm", new Member()); :
+     * model 객체에 Member를 저장하는데, 이때 model은 데이터를 View로 전달하는 데에 사용된다.
+     * 즉, View에서는 Member의 정보를 사용할 수 있게된다.
+     *
+     * return "members/createMemberForm"; : 해당 View를 Client에게 전달한다.
      **/
     @GetMapping("new")
     public String createForm(Model model)
@@ -52,7 +65,13 @@ public class MemberController
     }
 
     /*
-     * 채우시오
+     * @PostMapping("new") :
+     * POST 요청을 처리할 url 경로를 지정한다. "/members/new"가 된다.
+     *
+     * memberService.save(member); :
+     * http로부터 받아온 데이터를 Member 객체에 매핑한 이후, 해당 코드를 통해 DB에 객체를 저장한다.
+     *
+     * return "redirect:/"; : Client가 Server로부터 상태 코드를 받으면, Client는 새로운 url로 redirect한다.
      **/
     @PostMapping("new")
     public String create(Member member)
@@ -62,7 +81,11 @@ public class MemberController
     }
 
     /*
-     * 채우시오
+     * List<Member> memberList = memberService.findAll(); :
+     * DB 혹은 영속성 컨텍스트에서 모든 Member 엔티티를 조회하여 List에 저장한다.
+     *
+     * model.addAttribute("memberList", memberList); :
+     * List를 model에 저장하여 View 계층으로 전달함으로써, 웹에서 모든 member의 정보를 조회할 수 있다.
      **/
     @GetMapping("")
     public String findAll(Model model)
