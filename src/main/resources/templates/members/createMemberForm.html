@@ -24,22 +24,22 @@
         </div>
         <div class="form-group">
             <label th:for="city">도시</label>
-            <input type="text" th:field="*{city}" class="form-control"
+            <input type="text" th:field="*{address.city}" class="form-control"
                    placeholder="도시를 입력하세요">
         </div>
         <div class="form-group">
             <label th:for="state">지역구</label>
-            <input type="text" th:field="*{state}" class="form-control"
+            <input type="text" th:field="*{address.state}" class="form-control"
                    placeholder="지역구를 입력하세요">
         </div>
         <div class="form-group">
             <label th:for="street">도로명주소</label>
-            <input type="text" th:field="*{street}" class="form-control"
+            <input type="text" th:field="*{address.street}" class="form-control"
                    placeholder="거리를 입력하세요">
         </div>
         <div class="form-group">
             <label th:for="zipcode">우편번호</label>
-            <input type="text" th:field="*{zipcode}" class="form-control"
+            <input type="text" th:field="*{address.zipcode}" class="form-control"
                    placeholder="우편번호를 입력하세요">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
